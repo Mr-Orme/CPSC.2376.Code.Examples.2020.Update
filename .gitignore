@@ -1,0 +1,16 @@
+
+*.tlog
+*.idb
+*.log
+*.pdb
+*.ilk
+*.exe
+*.opendb
+.vs/CPSC.2376.Code.Examples/v16/.suo
+*.db
+*.db-shm
+*.db-wal
+*.obj
+*.ipch
+*.db
+.vs/CPSC.2376.Code.Examples/v16/.suo

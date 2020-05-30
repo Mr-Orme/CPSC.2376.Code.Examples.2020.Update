@@ -23,7 +23,7 @@ int main() {
 		}
 	}
 
-	enum class Life { dead, almostDead };
+	enum class Life { dead, almostDead, nearlyDead };
 
 	switch ((Life)health) //ES.70
 	{
@@ -31,11 +31,12 @@ int main() {
 	{
 		int x{ 6 };//curly braces needed if you are declaring a new variable.
 		cout << "Fatality!" << endl;
-		break;
+		//break;
 	}
+	case Life::nearlyDead:
 	case Life::almostDead:
 		cout << "Finish him!" << endl;
-		//break; //ES.78
+		break; //ES.78
 	default:
 		cout << "Fight!" << endl;
 		break;

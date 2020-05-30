@@ -8,6 +8,7 @@ struct Position
 };
 int main()
 {
+
 	std::vector<Position> coordinates{ {0,0}, {1,1}, {2,2} };
 	std::cout << coordinates.size() << std::endl;
 
@@ -16,4 +17,5 @@ int main()
 
 	Position player{ 4,4 };//this way is not prefered because of the creation of a temporary variable.
 	coordinates.push_back(player);
+	player.x = 3;
 }
