@@ -14,11 +14,11 @@ struct Answers {
 	int product;
 };
 
-void addMultiplyTwoNumbers(int, int, int&, int&);
+void addMultiplyTwoNumbers(int num1, int  num2, int& Psum, int& prod);
 //prefer struct for multiple out values
-Answers addMultiplyTwoNumbers(int, int);//this is an overload!
+Answers addMultiplyTwoNumbers(int num1, int num2);//this is an overload!
 
-tuple<int, int> addMultiplyTwoNumberTuple(int, int);//return type difference does not make an overload...
+tuple<int, int> addMultiplyTwoNumberTuple(int num1, int num2);//return type difference does not make an overload...
 tuple<int, int> loadTwoNumbers(const std::string& fileName);
 void saveTwoNumbers(int num1, int num2, const std::string& fileName);
 //const reference for large data types!
@@ -87,8 +87,9 @@ tuple<int, int> loadTwoNumbers(const std::string& fileName)
 	{
 		fin >> num1 >> num2;
 	}
-	return { num1, num2 };
 	fin.close();
+	return { num1, num2 };
+	
 }
 
 void saveTwoNumbers(int num1, int num2, const std::string& fileName)
@@ -97,4 +98,7 @@ void saveTwoNumbers(int num1, int num2, const std::string& fileName)
 	fout.open(fileName);
 	fout << num1 << std::endl << num2;
 	fout.close();
+
+	/*std::fstream fio;
+	fio.open(fileName, ios::app);*/
 }

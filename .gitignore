@@ -14,3 +14,5 @@
 *.ipch
 *.db
 .vs/CPSC.2376.Code.Examples/v16/.suo
+*.db
+.vs/CPSC.2376.Code.Examples/v16/Browse.VC.db
