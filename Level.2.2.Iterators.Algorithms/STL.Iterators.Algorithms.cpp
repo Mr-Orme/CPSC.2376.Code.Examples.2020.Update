@@ -1,0 +1,93 @@
+#include<iostream>
+
+#include <algorithm>
+//#include <iterator>
+#include <vector>
+#include <map>
+
+struct Vector2D//mathematical vector, not STL vector!
+{
+	int x{ 0 };
+	int y{ 0 };
+};
+int main()
+{
+	/*** Iterators***/
+	std::vector<int> v{ 1,2,3,4,5 };
+
+	std::vector<int>::iterator vIter; //<-- ugly syntax for iterators.
+	auto vIter2{ v.begin() }; //<-- by initializing with the first item in the vector, we can use auto. MUCH nicer!
+
+	//std::cout << vIter2; //<--can't just "cout" iterators. They are like pointers....
+	std::cout << *vIter2; //must dereference with the '*' operator (dereferencing operator).
+
+	*vIter2 = 2; //can use to modify where the iterator is pointing!
+
+	std::vector<Vector2D> points{ {0,0}, {1,1}, {2,2} };
+	auto thisPoint{ points.begin() };
+	//std::cout << *thisPoint.y; //Note, that the '.' operator has precedence over the * operator, so this won't work.
+	std::cout << (*thisPoint).y << std::endl; //paranthesis enure * is done first.
+	std::cout << thisPoint->y << std::endl; //arrow is easier!
+
+	/*** Algorithms ***/ //Herer is a list: http://www.cplusplus.com/reference/algorithm/
+	int x{ 4 };
+	std::for_each(v.begin(), v.end(), [=](int& i) {i+=x; }); //do something to each element.
+	
+	std::sort(v.begin(), v.end()); //sort
+	if (std::is_sorted(v.begin(), v.end()))
+	{
+		std::cout << "sorted" << std::endl;
+	}
+	
+	auto [smallest, largest] = std::minmax_element(v.begin(), v.end());
+
+	std::cout << *smallest << ", " << *largest << std::endl;
+	smallest = std::min_element(v.begin(), v.end());
+	largest = std::max_element(v.begin(), v.end());
+
+	//can store lambdas in a variable for reusue or clarity...
+	auto inFirstQuadrant{ [](Vector2D point) {return point.x > 0 && point.y > 0; } };
+	auto found{ std::find_if_not(points.begin(), points.end(), inFirstQuadrant) };
+
+	/** Must overload < operator for user-defined types. **/
+	if (std::all_of(v.begin(), v.end(), [](int i) {return i < 20; }))//check if something is true for every element.
+	{
+		std::cout << "everything's under 20" << std::endl;
+	}
+	if (std::none_of(v.begin(), v.end(), [](int i) {return i < -1; }))//check if something is false for every element
+	{
+		std::cout << "nothing's under 20" << std::endl;
+	}
+
+	/** must overload == operator for user-defined types. **/
+	std::cout << std::count(v.begin(), v.end(), 2) << std::endl; //count the number of times
+	if (auto result{ find(v.begin(), v.end(), 12) }; result != v.end()) //returns first one that matches.
+	{
+		std::cout << "Found it" << std::endl;
+	}
+	Vector2D comparePoint{ 2,2 };//please note, it is better to overload the == operator and just use find....
+	if (auto result{ find_if(points.begin(), points.end(), [&](Vector2D point)//finds, but not just ==
+		{
+			return point.x == comparePoint.x && point.y == comparePoint.y;
+		}
+	) }; result != points.end())
+	{
+		std::cout << "found a matching point!" << std::endl;
+	}
+
+	
+
+	//NOTE:: the + operator only works on iterators for sequential containers!!
+	std::fill(v.begin(), v.begin() + 2, -6);//fills the first 3 item's with a -6
+	
+	//NOTE:: remove & remove_if, moves the matching items to the end of the container
+	//and returns an iterator to the first one that was "removed"
+	//This saves a lot of deleting in the middle on containers where such deleting is expensive...
+	//deleting off the end is always cheap.
+	v.erase(std::remove(v.begin(), v.end(), -6), v.end()); //remvoes matching values...
+	v.erase(std::remove_if(v.begin(), v.end(), [](int i) {return i % 2 == 0; }), v.end());//choose your own comparison!
+
+	std::reverse(v.begin(), v.end()); //reverses the order
+	
+
+}

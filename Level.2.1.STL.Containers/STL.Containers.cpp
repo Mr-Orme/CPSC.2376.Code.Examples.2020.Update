@@ -25,12 +25,12 @@ float addTwoNumbers(float a, float b) {
 /*
  * Below is the Programming 2 approach (function Templates)
  */
-//template<typename A, typename B>
-//A addTwoNumbers(A a, B b)
-//{
-//	std::cout << "template version:" << std::endl;
-//	return(a + b);
-//}
+template<typename A, typename B>
+A addTwoNumbers(A a, B b)
+{
+	std::cout << "template version:" << std::endl;
+	return(a + b);
+}
 
 void main() {
 
@@ -42,7 +42,7 @@ void main() {
 	int y1{ 2 };
 	float x2{ 1.0f };
 	float y2{ 2.2f };
-	auto returnValue{ addTwoNumbers(x1, y1) };
+	auto returnValue{ addTwoNumbers(x2, y1) };
 	std::cout << returnValue << std::endl;
 
 	/*
@@ -52,7 +52,7 @@ void main() {
 	 */
 	int x3{ 4 };
 	double y3{ 2.7 };
-	std::cout << addTwoNumbers(x3, y3) << std::endl;
+	std::cout << addTwoNumbers(y3, x3) << std::endl;
 
 	/********** STL Arrays ***********/
 	std::array<int, 5> stlArray{ 1,2,3,4,5 };
@@ -98,7 +98,7 @@ void main() {
 		std::cout << item << " ";
 	}
 	std::cout << std::endl;
-
+	
 	/*
 	 *Lesson 2: sets maintain uniqueness of elements
 	 */
