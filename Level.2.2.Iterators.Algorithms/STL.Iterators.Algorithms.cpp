@@ -1,9 +1,8 @@
 #include<iostream>
 
 #include <algorithm>
-//#include <iterator>
 #include <vector>
-#include <map>
+
 
 struct Vector2D//mathematical vector, not STL vector!
 {
@@ -29,7 +28,7 @@ int main()
 	std::cout << (*thisPoint).y << std::endl; //paranthesis enure * is done first.
 	std::cout << thisPoint->y << std::endl; //arrow is easier!
 
-	/*** Algorithms ***/ //Herer is a list: http://www.cplusplus.com/reference/algorithm/
+	/*** Algorithms ***/ //Here is a list: http://www.cplusplus.com/reference/algorithm/
 	int x{ 4 };
 	std::for_each(v.begin(), v.end(), [=](int& i) {i+=x; }); //do something to each element.
 	
@@ -42,6 +41,8 @@ int main()
 	auto [smallest, largest] = std::minmax_element(v.begin(), v.end());
 
 	std::cout << *smallest << ", " << *largest << std::endl;
+	v.push_back(-1);
+	v.push_back(19);
 	smallest = std::min_element(v.begin(), v.end());
 	largest = std::max_element(v.begin(), v.end());
 
