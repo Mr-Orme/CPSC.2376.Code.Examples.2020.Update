@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <vector>
+#include <list>
 
 
 struct Vector2D//mathematical vector, not STL vector!
@@ -46,12 +47,8 @@ int main()
 	smallest = std::min_element(v.begin(), v.end());
 	largest = std::max_element(v.begin(), v.end());
 
-	//can store lambdas in a variable for reusue or clarity...
-	auto inFirstQuadrant{ [](Vector2D point) {return point.x > 0 && point.y > 0; } };
-	auto found{ std::find_if_not(points.begin(), points.end(), inFirstQuadrant) };
-
 	/** Must overload < operator for user-defined types. **/
-	if (std::all_of(v.begin(), v.end(), [](int i) {return i < 20; }))//check if something is true for every element.
+	if (std::all_of(v.begin(), v.end(), [](int i) {return i < 18; }))//check if something is true for every element.
 	{
 		std::cout << "everything's under 20" << std::endl;
 	}
@@ -61,12 +58,12 @@ int main()
 	}
 
 	/** must overload == operator for user-defined types. **/
-	std::cout << std::count(v.begin(), v.end(), 2) << std::endl; //count the number of times
+	std::cout << std::count(v.begin(), v.end(), 6) << std::endl; //count the number of times
 	if (auto result{ find(v.begin(), v.end(), 12) }; result != v.end()) //returns first one that matches.
 	{
 		std::cout << "Found it" << std::endl;
 	}
-	Vector2D comparePoint{ 2,2 };//please note, it is better to overload the == operator and just use find....
+	Vector2D comparePoint{ 2,3 };//please note, it is better to overload the == operator and just use find....
 	if (auto result{ find_if(points.begin(), points.end(), [&](Vector2D point)//finds, but not just ==
 		{
 			return point.x == comparePoint.x && point.y == comparePoint.y;
@@ -75,11 +72,13 @@ int main()
 	{
 		std::cout << "found a matching point!" << std::endl;
 	}
-
+	//can store lambdas in a variable for reusue or clarity...
+	auto inFirstQuadrant{ [](Vector2D point) {return point.x > 0 && point.y > 0; } };
+	auto found{ std::find_if_not(points.begin(), points.end(), inFirstQuadrant) };
 	
 
 	//NOTE:: the + operator only works on iterators for sequential containers!!
-	std::fill(v.begin(), v.begin() + 2, -6);//fills the first 3 item's with a -6
+	std::fill(v.begin(), v.begin() + 2, -6);//fills the first 2 item's with a -6
 	
 	//NOTE:: remove & remove_if, moves the matching items to the end of the container
 	//and returns an iterator to the first one that was "removed"
