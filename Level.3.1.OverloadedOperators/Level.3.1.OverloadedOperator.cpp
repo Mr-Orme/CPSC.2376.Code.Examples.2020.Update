@@ -11,7 +11,7 @@
 
 using namespace std;
 
-void main() {
+int main() {
 
 
 	SimpleSpaceShip sss1({ 0.0f,1.0f }, 10, 5, "SS1");

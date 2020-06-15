@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{6018D8BB-2883-463E-AA48-3E46657DEB08}</ProjectGuid>
+    <ProjectGuid>{C280525F-44CF-4BEC-B2EB-48B3AB0E68A7}</ProjectGuid>
     <RootNamespace>Level31OverloadedOperators</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>

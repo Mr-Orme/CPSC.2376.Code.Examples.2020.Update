@@ -24,6 +24,7 @@ protected:
 	float y{ 0 };
 
 	std::string name{ " " };
+
 };
 
 

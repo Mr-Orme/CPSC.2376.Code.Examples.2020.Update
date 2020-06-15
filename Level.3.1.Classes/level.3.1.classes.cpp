@@ -10,7 +10,6 @@ int main() {
 
 	SimpleSpaceShip sss2({ 21.5,-1.0 }, 5);
 	sss2.print();
-
 	system("PAUSE");
 
 	return 0;

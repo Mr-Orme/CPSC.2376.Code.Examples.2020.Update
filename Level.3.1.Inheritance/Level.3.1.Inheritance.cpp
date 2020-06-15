@@ -13,7 +13,7 @@
 
 using namespace std;
 
-void main() {
+int main() {
 
 	Vehicle v;
 	cout << v << endl;
@@ -21,6 +21,7 @@ void main() {
 	Plane p;
 	cout << p << endl;
 	p.setX(4);
+	p.Vehicle::setX(2);
 	v.setX(3);
 
 	cout << p.x << ", " << p.z << endl;

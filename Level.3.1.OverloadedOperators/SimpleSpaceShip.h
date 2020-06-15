@@ -18,9 +18,7 @@ public:
 
 	SimpleSpaceShip();				//default constructor
 	SimpleSpaceShip(Coordinates position, int fuel, int shield, std::string name);   //conversion constructor
-	SimpleSpaceShip(const SimpleSpaceShip &);	//copy constructor
-	SimpleSpaceShip(SimpleSpaceShip &&);
-	~SimpleSpaceShip();				//destructor
+
 
 	Coordinates getPosition() const;		//accessor method
 	int getShieldStrength()const;

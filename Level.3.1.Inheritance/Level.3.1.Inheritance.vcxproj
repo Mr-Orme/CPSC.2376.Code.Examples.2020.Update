@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{1270982B-2D60-4303-B81F-2E4382055EEC}</ProjectGuid>
+    <ProjectGuid>{F67953F3-E159-4E74-B91C-134E46E43E50}</ProjectGuid>
     <RootNamespace>Level31Inheritance</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Car.cpp" />
+    <ClCompile Include="Level.3.1.Inheritance.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="Vehicle.cpp" />
   </ItemGroup>
@@ -131,9 +132,6 @@
     <ClInclude Include="Car.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="Vehicle.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Level.3.1.Inheritance.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

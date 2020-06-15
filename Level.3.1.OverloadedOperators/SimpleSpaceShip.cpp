@@ -1,7 +1,3 @@
-/*
-* File: SimpleSpaceShip.cpp
-* Author: Keith Bush (2012)
-*/
 #include <iostream>
 #include "SimpleSpaceShip.h"
 
@@ -10,7 +6,7 @@ using namespace std;
 SimpleSpaceShip::SimpleSpaceShip()
 {
 	name += "_default";
-	cout << "Default Constructor Called, " << name << endl;
+	std::cout << "Default Constructor Called, " << name << endl;
 }
 
 SimpleSpaceShip::SimpleSpaceShip(Coordinates position, int fuel, int shield, std::string name)
@@ -21,45 +17,14 @@ SimpleSpaceShip::SimpleSpaceShip(Coordinates position, int fuel, int shield, std
 	cout << "Conversion Constructor Called, " << name << endl;
 }
 
-SimpleSpaceShip::SimpleSpaceShip(const SimpleSpaceShip & src) : shield{ src.getShieldStrength() }
-{
-	position = src.getPosition();
-	fuel = src.fuel;
-	name = src.getName() + "_copy";
-
-	cout << "Copy Constructor Called, " << name << endl;
-}
-
-SimpleSpaceShip::SimpleSpaceShip(SimpleSpaceShip && src) : shield{ src.getShieldStrength() }
-{
-	//1. release my resouces
-	position = { 0.0f, 0.0f };
-	fuel = 0;
-	name = " ";
-
-	//2. Steal resources from src.
-	position = src.getPosition();
-	fuel = src.fuel;
-	name = src.getName() + "_move";
-
-	//3. kill off src resources.
-	src.getPosition() = { 0.0f, 0.0f };
-	src.fuel = 0;
-	src.getName() = " ";
-
-	//Move constructor becomes less trivial when we learn about pointers! stay tuned!!
-	cout << "Move Constructor Called, " << name << endl;
-
-}
-
-SimpleSpaceShip::~SimpleSpaceShip()
-{
-	cout << name << " is being destroyed" << endl;
-}
-
 Coordinates SimpleSpaceShip::getPosition() const
 {
 	return position;
+}
+
+void SimpleSpaceShip::setPosition(Coordinates position)
+{
+	this->position = position;
 }
 
 int SimpleSpaceShip::getShieldStrength() const
@@ -72,10 +37,6 @@ std::string SimpleSpaceShip::getName() const
 	return name;
 }
 
-void SimpleSpaceShip::setPosition(Coordinates position)
-{
-	this->position = position;
-}
 
 void SimpleSpaceShip::setName(string name)
 {
@@ -150,6 +111,7 @@ std::istream & operator>>(std::istream & o, SimpleSpaceShip & src)
 bool operator<(const SimpleSpaceShip & srcL, const SimpleSpaceShip & srcR)
 {
 	return srcL.getPosition().x < srcR.getPosition().x && srcL.getPosition().y < srcR.getPosition().y;
+	
 }
 
 bool operator>(const SimpleSpaceShip & srcL, const SimpleSpaceShip & srcR)
