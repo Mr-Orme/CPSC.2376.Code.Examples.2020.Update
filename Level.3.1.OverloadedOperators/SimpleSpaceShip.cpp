@@ -1,3 +1,4 @@
+#include "..\Level.4.1.Smart.Pointers\SimpleSpaceShip.h"
 #include <iostream>
 #include "SimpleSpaceShip.h"
 
@@ -21,6 +22,7 @@ Coordinates SimpleSpaceShip::getPosition() const
 {
 	return position;
 }
+
 
 void SimpleSpaceShip::setPosition(Coordinates position)
 {

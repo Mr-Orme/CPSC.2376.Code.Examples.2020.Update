@@ -15,10 +15,10 @@ public:
 	Plane();
 	~Plane();
 
-	//void changePosition(char) override;
-	//string toString() override;
-	void changePosition(char);
-	string toString();
+	void changePosition(char) override;
+	string toString() override;
+	/*void changePosition(char);
+	string toString();*/
 
 
 };

@@ -10,11 +10,12 @@ void doCommand(Vehicle& v);
 
 int main() {
 
-	int numSteps = 10;
+	int numSteps{ 10 };
 
 
 	/*Lesson 1: reference to parents can refer to children*/
-	Vehicle v = Plane();
+	Truck p{ Truck() };
+	Vehicle& v{ p };
 
 	/*Lesson 2: invoking methods has the desired polymorphic behavior
 	* because of virtual keyword (see Vehicle.h).
@@ -26,14 +27,14 @@ int main() {
 	for (int i = 0; i < numSteps; i++) {
 
 
-		doCommand(v);
+		doCommand(p);
 
-		char command;
+		/*char command;
 		cout << "Input a command: ";
-		cin >> command;
+		cin >> command;*/
 
 		/*invoke's plane's changePosition() method*/
-		v.changePosition(command);
+		//v.changePosition(command);
 
 		cout << v.toString() << endl;
 
