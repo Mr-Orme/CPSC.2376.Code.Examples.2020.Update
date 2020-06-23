@@ -39,6 +39,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Level.4.1.Pointers.Allocati
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Level.4.1.Smart.Pointers", "Level.4.1.Smart.Pointers\Level.4.1.Smart.Pointers.vcxproj", "{C9BADA26-D86E-475E-A9C1-16ED96F4DDED}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Level.4.2.Rule.Of.5", "Level.4.2.Rule.Of.5\Level.4.2.Rule.Of.5.vcxproj", "{F263C2A4-9FF7-45E5-96A5-B30EF0457395}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -191,6 +193,14 @@ Global
 		{C9BADA26-D86E-475E-A9C1-16ED96F4DDED}.Release|x64.Build.0 = Release|x64
 		{C9BADA26-D86E-475E-A9C1-16ED96F4DDED}.Release|x86.ActiveCfg = Release|Win32
 		{C9BADA26-D86E-475E-A9C1-16ED96F4DDED}.Release|x86.Build.0 = Release|Win32
+		{F263C2A4-9FF7-45E5-96A5-B30EF0457395}.Debug|x64.ActiveCfg = Debug|x64
+		{F263C2A4-9FF7-45E5-96A5-B30EF0457395}.Debug|x64.Build.0 = Debug|x64
+		{F263C2A4-9FF7-45E5-96A5-B30EF0457395}.Debug|x86.ActiveCfg = Debug|Win32
+		{F263C2A4-9FF7-45E5-96A5-B30EF0457395}.Debug|x86.Build.0 = Debug|Win32
+		{F263C2A4-9FF7-45E5-96A5-B30EF0457395}.Release|x64.ActiveCfg = Release|x64
+		{F263C2A4-9FF7-45E5-96A5-B30EF0457395}.Release|x64.Build.0 = Release|x64
+		{F263C2A4-9FF7-45E5-96A5-B30EF0457395}.Release|x86.ActiveCfg = Release|Win32
+		{F263C2A4-9FF7-45E5-96A5-B30EF0457395}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
