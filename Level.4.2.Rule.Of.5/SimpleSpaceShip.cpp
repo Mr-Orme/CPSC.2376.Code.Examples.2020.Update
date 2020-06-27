@@ -22,16 +22,14 @@ SimpleSpaceShip::SimpleSpaceShip(Coordinates position, int fuel, int frontShield
 	std::cout << "Conversion Constructor Called, " << name << std::endl;
 }
 
-SimpleSpaceShip::SimpleSpaceShip(const SimpleSpaceShip & src) 
-	//new memory created
-	: frontShield{ std::make_unique<Shield>(src.frontShield->getStrength()) }, 
-	rearShield{ std::make_unique<Shield>(src.rearShield->getStrength()) }
+SimpleSpaceShip::SimpleSpaceShip(const SimpleSpaceShip& src)
+//new memory created
+	: frontShield{ std::make_unique<Shield>(src.frontShield->getStrength()) },
+	rearShield{ std::make_unique<Shield>(src.rearShield->getStrength()) },
+	position(src.position),
+	fuel(src.fuel),
+	name(src.name + "_copy")
 {
-	//copy values from stack.
-	position = src.position;
-	fuel = src.fuel;
-	name = src.name + "_copy";
-
 	std::cout << "Copy Constructor Called, " << name << std::endl;
 }
 
@@ -67,7 +65,7 @@ SimpleSpaceShip& SimpleSpaceShip::operator=(const SimpleSpaceShip& src) noexcept
 	name = src.name + "_copyAssignment";
 
 	//copy heap values from src
-	frontShield= std::make_unique<Shield>(src.frontShield->getStrength());
+	frontShield = std::make_unique<Shield>(src.frontShield->getStrength());
 	rearShield = std::make_unique<Shield>(src.rearShield->getStrength());
 	
 	return *this;
