@@ -20,10 +20,10 @@ void printTreeLRN(std::shared_ptr<node> currNode);
 
 int main()
 {
-	std::vector<int> forTree{ 20, 6, 18, 7, 2 };
+	std::vector<int> forTree{ 20, 6, 18, 7, 2, 25 };
 	/*			20
 				/\
-			   6
+			   6  25
 			  /\
 			 2  18
 				/\
@@ -124,7 +124,7 @@ std::shared_ptr<node> insertRecursive(std::shared_ptr<node> currNode, int data)
 
 }
 
-std::shared_ptr<node> search(std::shared_ptr<node> root, int key)
+std::shared_ptr<node> search(std::shared_ptr<node> root, int key, int& distance)
 {
 	std::shared_ptr<node> currNode{ root };
 	while (currNode != nullptr)
