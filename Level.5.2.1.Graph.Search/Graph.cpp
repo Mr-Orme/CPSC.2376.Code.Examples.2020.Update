@@ -46,7 +46,7 @@ void Graph::BFS(int startNum)
 
 int Graph::numVertices() const
 {
-	return vertices.size();
+	return vertices.size()-1;
 }
 
 std::shared_ptr<Vertex> Graph::addVertex(int vertexNum)
