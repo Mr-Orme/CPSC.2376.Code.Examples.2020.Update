@@ -10,6 +10,10 @@ struct Vector2D//mathematical vector, not STL vector!
 	int x{ 0 };
 	int y{ 0 };
 };
+int fooFunction(int num1, int num2)
+{
+	return num1 * num2;
+}
 int main()
 {
 	/*** Iterators***/
@@ -21,13 +25,25 @@ int main()
 	//std::cout << vIter2; //<--can't just "cout" iterators. They are like pointers....
 	std::cout << *vIter2; //must dereference with the '*' operator (dereferencing operator).
 
-	*vIter2 = 2; //can use to modify where the iterator is pointing!
+	*vIter2 = 2; //can use to modify the container at the spot where the iterator is pointing!
 
 	std::vector<Vector2D> points{ {0,0}, {1,1}, {2,2} };
 	auto thisPoint{ points.begin() };
 	//std::cout << *thisPoint.y; //Note, that the '.' operator has precedence over the * operator, so this won't work.
 	std::cout << (*thisPoint).y << std::endl; //paranthesis enure * is done first.
 	std::cout << thisPoint->y << std::endl; //arrow is easier!
+
+	/*** Lambdas vs function ****/
+	auto fooLambda{ [&](int num1, int num2)->int //Note:: -> returnType is optional
+	{
+			//think of capture [&] as automatic parameters.
+			points.begin();//we have captured by reference and so can modify this!!!
+			return num1 * num2;
+
+		} };
+	
+	std::cout << fooFunction(2, 3) << std::endl;
+	std::cout << fooLambda(2, 3) << std::endl;
 
 	/*** Algorithms ***/ //Here is a list: http://www.cplusplus.com/reference/algorithm/
 	int x{ 4 };

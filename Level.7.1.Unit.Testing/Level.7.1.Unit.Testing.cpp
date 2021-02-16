@@ -21,5 +21,16 @@ namespace Level71UnitTesting
 			Assert::AreEqual(4, testGraph.numVertices());
 			
 		}
+		TEST_METHOD(GraphNumVertices2)
+		{
+			Graph testGraph;
+			testGraph.addEdge(0, 1);
+			testGraph.addEdge(0, 2);
+			testGraph.addEdge(1, 2);
+			testGraph.addEdge(2, 3);
+			testGraph.addEdge(5, 5);
+			Assert::AreEqual(4, testGraph.numVertices());
+
+		}
 	};
 }

@@ -99,6 +99,6 @@ void saveTwoNumbers(int num1, int num2, const std::string& fileName)
 	fout << num1 << std::endl << num2;
 	fout.close();
 
-	/*std::fstream fio;
-	fio.open(fileName, ios::app);*/
+	std::fstream fio;
+	fio.open(fileName, ios::app);
 }
