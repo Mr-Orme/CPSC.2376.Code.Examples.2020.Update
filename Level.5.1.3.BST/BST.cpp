@@ -10,9 +10,9 @@ struct node
 };
 
 void insert(std::shared_ptr<node>& root, int data);
-std::shared_ptr<node> insertRecursive(std::shared_ptr<node>, int);
-std::shared_ptr<node> search(std::shared_ptr<node>, int);
-std::shared_ptr<node> remove(std::shared_ptr<node>, int);
+std::shared_ptr<node> insertRecursive(std::shared_ptr<node>, int key);
+std::shared_ptr<node> search(std::shared_ptr<node> root, int key);
+std::shared_ptr<node> remove(std::shared_ptr<node> root, int key);
 
 void printTreeLNR(std::shared_ptr<node> currNode);
 void printTreeNLR(std::shared_ptr<node> currNode);
@@ -124,7 +124,7 @@ std::shared_ptr<node> insertRecursive(std::shared_ptr<node> currNode, int data)
 
 }
 
-std::shared_ptr<node> search(std::shared_ptr<node> root, int key, int& distance)
+std::shared_ptr<node> search(std::shared_ptr<node> root, int key)//, int& distance)
 {
 	std::shared_ptr<node> currNode{ root };
 	while (currNode != nullptr)

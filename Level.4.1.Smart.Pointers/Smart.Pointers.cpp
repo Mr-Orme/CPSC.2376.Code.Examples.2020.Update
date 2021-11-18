@@ -20,6 +20,7 @@ void print(SimpleSpaceShip* SSS)
 	SSS->print();
 	std::cout << std::endl;
 }
+
 std::unique_ptr<SimpleSpaceShip> makeShip()
 {
 	std::unique_ptr<SimpleSpaceShip> temp{ std::make_unique<SimpleSpaceShip>() };

@@ -17,9 +17,9 @@ void swap_by_reference(int& a, int& b) {
 void swap_by_pointer(int* a, int* b) {
 	//a --> x
 	//b --> y
-	int* tmp = a;
-	a = b;
-	b = tmp;
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
 int main() {

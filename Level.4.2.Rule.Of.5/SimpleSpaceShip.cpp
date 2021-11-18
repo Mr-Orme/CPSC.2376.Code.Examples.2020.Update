@@ -26,6 +26,7 @@ SimpleSpaceShip::SimpleSpaceShip(const SimpleSpaceShip& src)
 //new memory created
 	: frontShield{ std::make_unique<Shield>(src.frontShield->getStrength()) },
 	rearShield{ std::make_unique<Shield>(src.rearShield->getStrength()) },
+	//rearShield(src.rearShield),
 	position(src.position),
 	fuel(src.fuel),
 	name(src.name + "_copy")
@@ -59,7 +60,7 @@ SimpleSpaceShip& SimpleSpaceShip::operator=(const SimpleSpaceShip& src) noexcept
 		return *this;
 	}
 
-	//copy cheap values
+	//copy non-pointer values
 	position = src.position;
 	fuel = src.fuel;
 	name = src.name + "_copyAssignment";
