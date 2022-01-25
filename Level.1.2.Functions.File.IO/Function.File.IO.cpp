@@ -17,7 +17,7 @@ struct Answers {
 void addMultiplyTwoNumbers(int num1, int  num2, int& Psum, int& prod);
 //prefer struct for multiple out values
 Answers addMultiplyTwoNumbers(int num1, int num2);//this is an overload!
-
+//sum, product
 tuple<int, int> addMultiplyTwoNumberTuple(int num1, int num2);//return type difference does not make an overload...
 tuple<int, int> loadTwoNumbers(const std::string& fileName);
 void saveTwoNumbers(int num1, int num2, const std::string& fileName);
@@ -80,9 +80,9 @@ tuple<int, int> addMultiplyTwoNumberTuple(int num1, int num2)
 tuple<int, int> loadTwoNumbers(const std::string& fileName)
 {
 	std::ifstream fin;
+	fin.open(fileName);
 	int num1{ 0 };
 	int num2{ 0 };
-	fin.open(fileName);
 	if (fin.is_open())
 	{
 		fin >> num1 >> num2;
