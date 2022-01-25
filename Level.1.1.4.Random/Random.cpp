@@ -27,12 +27,12 @@ int main() {
 	bernoulli_distribution bd(.75);
 	
 	int distribution[maxValue] = { 0 };
-	cout << ud(e);//<-- This does the actual generation!
+	cout << ud(e) << std::endl;//<-- This does the actual generation!
 	for (int i = 0; i < 10000; i++)
 	{
 		//distribution[ud(e)]++;
-		distribution[(int)nd(e)]++;
-		//distribution[(int)bd(e)]++;
+		//distribution[(int)nd(e)]++;
+		distribution[(int)bd(e)]++;
 
 	}
 
