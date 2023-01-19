@@ -17,7 +17,7 @@ int main(){
 	std::unique_ptr<GameLibrary> modLibrary{ std::make_unique<ModGameLibrary>() };  //stores inventory of modifed ObjectFactories (if they exist)
 
 	//Display utility of the object factory
-	vector<std::unique_ptr<Object>> objects;
+	std::vector<std::unique_ptr<Object>> objects;
 	
 	std::random_device seed;
 	std::default_random_engine engine(seed());
@@ -25,7 +25,7 @@ int main(){
 	const int N{ 10 };
 	for(int i=0;i<N;i++){
 		//Imagine that the game is dynamically calling for types
-		string objectType;
+		std::string objectType;
 		/*Randomly demand one of three types of object*/
 		switch(chooseType(engine)){
 		case 1:
@@ -39,7 +39,7 @@ int main(){
 			break;
 		}
 
-		cout << "TYPE: " << objectType << endl;
+		std::cout << "TYPE: " << objectType << std::endl;
 		
 		//Search through the mod classes
 		if (auto found{ modLibrary->inventory.find(objectType) }; found != modLibrary->inventory.end()) {

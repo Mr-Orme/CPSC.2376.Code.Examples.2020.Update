@@ -28,12 +28,12 @@ public:
 	virtual void changePosition(char) = 0;
 	
 	/*** polmorphic ***/
-	/*virtual std::string toString();
-	virtual void changePosition(char);*/	
+	//virtual std::string toString();
+	//virtual void changePosition(char);
 
 	/*** non-polymorphic ***/
-	/*std::string toString();
-	void changePosition(char);*/
+	//std::string toString();
+	//void changePosition(char);
 
 
 protected:

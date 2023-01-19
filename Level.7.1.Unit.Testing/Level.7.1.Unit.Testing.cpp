@@ -4,9 +4,9 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace Level71UnitTesting
+namespace MyTest
 {
-	TEST_CLASS(Level71UnitTesting)
+	TEST_CLASS(Example)
 	{
 	public:
 		
@@ -18,7 +18,7 @@ namespace Level71UnitTesting
 			testGraph.addEdge(1, 2);
 			testGraph.addEdge(2, 3);
 			testGraph.addEdge(5, 5);
-			Assert::AreEqual(4, testGraph.numVertices());
+			Assert::AreEqual(5, testGraph.numVertices());
 			
 		}
 		TEST_METHOD(GraphNumVertices2)
@@ -29,8 +29,8 @@ namespace Level71UnitTesting
 			testGraph.addEdge(1, 2);
 			testGraph.addEdge(2, 3);
 			testGraph.addEdge(5, 5);
-			Assert::AreEqual(4, testGraph.numVertices());
-
+			Assert::AreEqual(5, testGraph.numVertices());
+			Assert::IsTrue(testGraph.numVertices() > 6);
 		}
 	};
 }

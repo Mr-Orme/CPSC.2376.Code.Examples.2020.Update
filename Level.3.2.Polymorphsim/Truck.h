@@ -15,7 +15,7 @@ public:
 	//void changePosition(char) override;
 	//string toString() override;
 	void changePosition(char);
-	string toString();
+	string toString();// override;
 
 
 };

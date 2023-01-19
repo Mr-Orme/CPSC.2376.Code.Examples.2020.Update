@@ -13,7 +13,8 @@ SimpleSpaceShip::SimpleSpaceShip()
 	cout << "Default Constructor Called, " << name << endl;
 }
 
-SimpleSpaceShip::SimpleSpaceShip(Vector2D position, int fuel) : position{ position }, fuel{ fuel }
+SimpleSpaceShip::SimpleSpaceShip(Vector2D position, std::string name)
+	: position{ position }, name{ name }
 {
 	name += "_conversion";
 	cout << "Conversion Constructor Called, " << name << endl;

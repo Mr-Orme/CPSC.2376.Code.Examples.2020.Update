@@ -9,6 +9,10 @@ Vehicle::Vehicle() :x(1.1f), y(1.1f), name("Vehicle")
 	cout << "Vehicle constructor" << endl;
 }
 
+Vehicle::Vehicle(float x, float y) : x{ x }, y{ y }
+{
+}
+
 void Vehicle::setX(float x)
 {
 	this->x = x;

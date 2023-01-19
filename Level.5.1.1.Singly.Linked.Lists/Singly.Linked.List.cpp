@@ -1,36 +1,36 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-using namespace std;
+
 
 struct node
 {
 	int data{ 0 };
-	std::shared_ptr<node> next{ nullptr };
+	std::unique_ptr<node> next{ nullptr };
 };
 //add item at certain place in list, returns pointer head;
 //head is place = 0;
-std::shared_ptr<node> addItem(std::shared_ptr<node> head, int place, int data);
+void addItem(std::unique_ptr<node>& head, int place, int data);
 
 //searches list for data and removes it. returns head.
-std::shared_ptr<node> removeItem(std::shared_ptr<node> head, int data);
+void removeItem(std::unique_ptr<node>& head, int data);
 
 
 int main()
 {
-	std::shared_ptr<node> head{ std::make_shared<node>() };
+	std::unique_ptr<node> head{ std::make_unique<node>() };
 	head->data = 0;
 
-	std::shared_ptr<node> currNode = head;
+	node* currNode = head.get();
 	for (int i = 1; i < 10; i++)
 	{
 		while (currNode->next != nullptr)
 		{
-			currNode = currNode->next;
+			currNode = currNode->next.get();
 		}
-		std::shared_ptr<node> temp{ std::make_shared<node>() };
-		currNode->next = temp;
-		currNode = currNode->next;
+		std::unique_ptr<node> temp{ std::make_unique<node>() };
+		currNode->next = std::move(temp);
+		currNode = currNode->next.get();
 		currNode->data = i;
 	}
 
@@ -38,30 +38,30 @@ int main()
 	do
 	{
 		//display list:
-		currNode = head;
+		currNode = head.get();
 		while (currNode->next != nullptr)
 		{
-			cout << currNode->data << endl;
-			currNode = currNode->next;
+			std::cout << currNode->data << std::endl;
+			currNode = currNode->next.get();
 		}
-		cout << currNode->data << endl;
+		std::cout << currNode->data << std::endl;
 
-		cout << "(a)dd item or (r)emove item or (q)uit: ";
-		cin >> command;
+		std::cout << "(a)dd item or (r)emove item or (q)uit: ";
+		std::cin >> command;
 		int data = 0;
 		int place = 0;
 		switch (command)
 		{
 		case 'a':
-			cout << endl << "What number do you want to add and where? ";
-			cin >> data >> place;
-			head = addItem(head, place, data);
+			std::cout << std::endl << "What number do you want to add and where? ";
+			std::cin >> data >> place;
+			addItem(head, place, data);
 			break;
 
 		case 'r':
-			cout << endl << "What number do you want to remove? ";
-			cin >> data;
-			head = removeItem(head, data);
+			std::cout << std::endl << "What number do you want to remove? ";
+			std::cin >> data;
+			removeItem(head, data);
 			break;
 		}
 		system("CLS");
@@ -70,41 +70,40 @@ int main()
 	return 0;
 
 }
-std::shared_ptr<node> addItem(std::shared_ptr<node> head, int place, int data)
+void addItem(std::unique_ptr<node>& head, int place, int data)
 {
 	if (head != nullptr)
 	{
-		std::shared_ptr<node> currNode = head;
+		node* currNode = head.get();
 
-		std::shared_ptr<node> temp{ std::make_shared<node>() };
+		std::unique_ptr<node> temp{ std::make_unique<node>() };
 		temp->data = data;
 		temp->next = nullptr;
 
 		if (place == 0)
 		{
 
-			temp->next = head;
-			head = temp;
+			temp->next = std::move(head);
+			head = std::move(temp);
 		}
 		else
 		{
 			int i = 0;
 			while (currNode->next != nullptr && i != place)
 			{
-				currNode = currNode->next;
+				currNode = currNode->next.get();
 				i++;
 			}
 			if (i == place)
 			{
-				temp->next = currNode->next;
-				currNode->next = temp;
+				temp->next = std::move(currNode->next);
+				currNode->next = std::move(temp);
 			}
 		}
 	}
-	return head;
 }
 
-std::shared_ptr<node> removeItem(std::shared_ptr<node> head, int data)
+void removeItem(std::unique_ptr<node>& head, int data)
 {
 
 	//head
@@ -113,27 +112,25 @@ std::shared_ptr<node> removeItem(std::shared_ptr<node> head, int data)
 	//doesn't exist
 	if (head != nullptr)
 	{
-		std::shared_ptr<node> currNode{ nullptr };
+		node* currNode{ nullptr };
 		if (head->data == data)
 		{
-			currNode = head;
-			head = currNode->next;
+			head = std::move(currNode->next);
 		}
 		else
 		{
-			std::shared_ptr<node> prevnode{ head };
-			currNode = head->next;
+			node* prevnode{ head.get()};
+			currNode = head->next.get();
 			while (currNode != nullptr && currNode->data != data)
 			{
 				prevnode = currNode;
-				currNode = currNode->next;
+				currNode = currNode->next.get();
 			}
 
 			if (currNode != nullptr && currNode->data == data)
 			{
-				prevnode->next = currNode->next;
+				prevnode->next = std::move(currNode->next);
 			}
 		}
 	}
-	return head;
 }

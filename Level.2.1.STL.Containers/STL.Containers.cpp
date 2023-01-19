@@ -7,6 +7,7 @@
 
 #include <set>
 #include <map>
+#include <unordered_map>
 
 /*
  * Below is the Programming 1 approach (function overloading)
@@ -26,7 +27,7 @@ float addTwoNumbers(float a, float b) {
  * Below is the Programming 2 approach (function Templates)
  */
 template<typename A, typename B>
-A addTwoNumbers(A a, B b)
+B addTwoNumbers(A a, B b)
 {
 	std::cout << "template version:" << std::endl;
 	return(a + b);
@@ -52,15 +53,19 @@ void main() {
 	 */
 	int x3{ 4 };
 	double y3{ 2.7 };
-	std::cout << addTwoNumbers(y3, x3) << std::endl;
+	struct Position { int x; int y; };
+	Position position;
+	std::cout << addTwoNumbers(x3, y3) << std::endl;
 
 	/********** STL Arrays ***********/
-	std::array<int, 5> stlArray{ 1,2,3,4,5 };
+	std::array<int, 5> stlArray{ 1,2,3 };
+	int cArray[5]{ 1,2,3,4,5 };//c-style array
 	std::cout << stlArray[0] << " " << stlArray.at(1) << std::endl;
 	for (auto num : stlArray)
 	{
 		std::cout << num << " ";
 	}
+	
 	std::cout << std::endl;
 
 	/*********** STL Vector ***********/
@@ -123,6 +128,10 @@ void main() {
 	for (int i{ 0 }; i < ASCII.size(); i++)
 	{
 		std::cout << i << ": " << ASCII.at(i) << std::endl;
+	}
+	if (auto itemIt{ object.inventory.find(Item::Type::sword) }, itemIT != object.inventory.end())
+	{
+		itemIT->second.bonusValue
 	}
 
 	if (auto ASCIIit{ ASCII.find(64) }; ASCIIit != ASCII.end())

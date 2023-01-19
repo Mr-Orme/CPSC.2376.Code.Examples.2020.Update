@@ -15,7 +15,7 @@ class SimpleSpaceShip {
 public:
 
 	SimpleSpaceShip();				//default constructor
-	SimpleSpaceShip(Vector2D position, int name);   //conversion constructor
+	SimpleSpaceShip(Vector2D position, std::string name);   //conversion constructor
 
 	Vector2D getPosition() const;		//accessor method
 	void setPosition(Vector2D position);		//accessor method	

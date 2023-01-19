@@ -5,8 +5,6 @@
 #include"Child1Factory.h"
 #include"Child2Factory.h"
 
-using namespace std;
-
 class BaseGameLibrary : public GameLibrary{
 
 public:

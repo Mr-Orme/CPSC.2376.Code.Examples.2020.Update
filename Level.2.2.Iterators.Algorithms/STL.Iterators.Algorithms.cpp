@@ -20,7 +20,8 @@ int main()
 	std::vector<int> v{ 1,2,3,4,5 };
 
 	std::vector<int>::iterator vIter; //<-- ugly syntax for iterators.
-	auto vIter2{ v.begin() }; //<-- by initializing with the first item in the vector, we can use auto. MUCH nicer!
+	auto vIter2{ v.begin() }; //<-- by initializing with the first item 
+							//in the vector, we can use auto. MUCH nicer!
 
 	//std::cout << vIter2; //<--can't just "cout" iterators. They are like pointers....
 	std::cout << *vIter2; //must dereference with the '*' operator (dereferencing operator).
@@ -32,14 +33,17 @@ int main()
 	//std::cout << *thisPoint.y; //Note, that the '.' operator has precedence over the * operator, so this won't work.
 	std::cout << (*thisPoint).y << std::endl; //paranthesis enure * is done first.
 	std::cout << thisPoint->y << std::endl; //arrow is easier!
-
+	thisPoint++; //<-- can increment and decrement iterators!
+	Vector2D myPoint;
 	/*** Lambdas vs function ****/
-	auto fooLambda{ [&](int num1, int num2)->int //Note:: -> returnType is optional
+	auto fooLambda{ [&](int num1, int num2)  //Note:: -> returnType is optional
 	{
+			myPoint.x = 2;
+			thisPoint;
 			//think of capture [&] as automatic parameters.
-			points.begin();//we have captured by reference and so can modify this!!!
+			points.begin()->x = 3;//we have captured by reference and so can modify this!!!
 			return num1 * num2;
-
+			//return { num1, num2 };
 		} };
 	
 	std::cout << fooFunction(2, 3) << std::endl;
@@ -47,7 +51,14 @@ int main()
 
 	/*** Algorithms ***/ //Here is a list: http://www.cplusplus.com/reference/algorithm/
 	int x{ 4 };
-	std::for_each(v.begin(), v.end(), [=](int& i) {i+=x; }); //do something to each element.
+	for (auto& i : v)
+	{
+		i += x;
+	}
+	std::for_each(v.begin()+2, v.end()-1, [=](int& i) 
+		{
+			i+=x; 
+		}); //do something to each element.
 	
 	std::sort(v.begin(), v.end()); //sort
 	if (std::is_sorted(v.begin(), v.end()))
@@ -80,7 +91,8 @@ int main()
 		std::cout << "Found it" << std::endl;
 	}
 	Vector2D comparePoint{ 2,3 };//please note, it is better to overload the == operator and just use find....
-	if (auto result{ find_if(points.begin(), points.end(), [&](Vector2D point)//finds, but not just ==
+	if (auto result{ find_if(points.begin(), points.end(), 
+		[&](Vector2D point)//finds, but not just ==
 		{
 			return point.x == comparePoint.x && point.y == comparePoint.y;
 		}
@@ -100,10 +112,15 @@ int main()
 	//and returns an iterator to the first one that was "removed"
 	//This saves a lot of deleting in the middle on containers where such deleting is expensive...
 	//deleting off the end is always cheap.
-	v.erase(std::remove(v.begin(), v.end(), -6), v.end()); //remvoes matching values...
+	v.erase(
+		std::remove(v.begin(), v.end(), -6)
+		, v.end()); //remvoes matching values...
 	v.erase(std::remove_if(v.begin(), v.end(), [](int i) {return i % 2 == 0; }), v.end());//choose your own comparison!
 
 	std::reverse(v.begin(), v.end()); //reverses the order
 	
-
+	for (auto& item : v)
+	{
+		item++;
+	}
 }

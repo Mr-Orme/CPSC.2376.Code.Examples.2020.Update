@@ -1,6 +1,5 @@
 
-#ifndef SIMPLESPACESHIP_H
-#define SIMPLESPACESHIP_H
+#pragma once
 
 #include <string>
 #include <iostream>
@@ -34,7 +33,9 @@ public:
 	SimpleSpaceShip& operator++();
 	SimpleSpaceShip& operator--();
 	SimpleSpaceShip& operator+= (const SimpleSpaceShip& src);
+	SimpleSpaceShip& operator+= (int src);
 	
+
 	int fuel{ 0 };     //data member 
 private:
 	Coordinates position{ 0.0f, 0.0f };
@@ -61,5 +62,3 @@ bool operator>(const SimpleSpaceShip& srcL, const SimpleSpaceShip& srcR);
 //define == and != should be based off of ==
 bool operator==(const SimpleSpaceShip& srcL, const SimpleSpaceShip& srcR);
 bool operator!=(const SimpleSpaceShip& srcL, const SimpleSpaceShip& srcR);
-
-#endif

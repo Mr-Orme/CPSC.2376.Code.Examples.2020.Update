@@ -3,21 +3,20 @@
 
 #include<iostream>
 
-using namespace std;
-
 class Vehicle {
 
 public:
 	
 
 	Vehicle();
+	Vehicle(float x, float y);
 	void setX(float);
 	void setY(float);
 	float getX() const;
 	float getY() const;	
 	float x{ 0 };
 
-	friend ostream& operator <<(ostream&, const Vehicle&);
+	friend std::ostream& operator <<(std::ostream&, const Vehicle&);
 
 protected:
 

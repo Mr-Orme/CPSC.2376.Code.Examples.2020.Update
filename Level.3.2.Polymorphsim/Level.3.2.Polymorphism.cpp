@@ -14,9 +14,9 @@ int main() {
 
 
 	/*Lesson 1: reference to parents can refer to children*/
-	Truck p{ Truck() };
+	Plane p{ Plane() };
 	Vehicle& v{ p };
-
+	Vehicle v2;
 	/*Lesson 2: invoking methods has the desired polymorphic behavior
 	* because of virtual keyword (see Vehicle.h).
 	*/

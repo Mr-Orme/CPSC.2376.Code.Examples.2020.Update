@@ -1,8 +1,6 @@
 #include <iostream>
 #include "SimpleSpaceShip.h"
 
-using namespace std;
-
 //SimpleSpaceShip SSS(sss3);
 SimpleSpaceShip horizontalThrustMoveReturn(SimpleSpaceShip SSS)
 {
@@ -12,6 +10,12 @@ SimpleSpaceShip horizontalThrustMoveReturn(SimpleSpaceShip SSS)
 	return SSS;
 }
 //SimpleSpaceShip& SSS{ sss3 };
+SimpleSpaceShip horizontalThrust(SimpleSpaceShip&& SSS)
+{
+	SSS.setPosition({ SSS.getPosition().x + 5, SSS.getPosition().y });
+
+	return SSS;
+}
 SimpleSpaceShip horizontalThrust(SimpleSpaceShip& SSS)
 {
 	SSS.setPosition({ SSS.getPosition().x + 5, SSS.getPosition().y });

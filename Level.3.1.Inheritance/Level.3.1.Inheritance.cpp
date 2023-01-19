@@ -7,6 +7,7 @@
  */
 #include<iostream>
 #include <vector>
+#include <array>
 #include "Vehicle.h"
 #include "Plane.h"
 #include "Car.h"
@@ -17,7 +18,6 @@ int main() {
 
 	Vehicle v;
 	cout << v << endl;
-
 	Plane p;
 	cout << p << endl;
 	p.setX(4);
@@ -42,6 +42,7 @@ int main() {
 	cout << p << endl;
 	cout << p.x << endl;
 
+
 	system("PAUSE");
 
 	/*
@@ -65,7 +66,7 @@ int main() {
 	*/
 	Vehicle& vRef = p;
 	vRef.setX(-20);
-
+	
 	cout << vRef << endl;
 
 	/*
@@ -79,8 +80,8 @@ int main() {
 
 	//Lesson 5: can't create arrays or vecotrs of references;
 
-	//Vehicle& militaryRef[10];
-	//vector<Vehicle&> militaryVec;
+	//std::array<Vehicle&, 10> militaryRef;
+	//std::vector<Vehicle&> militaryVec;
 	//militaryVec.push_back(p); //<-- compile time error! references are not copyable!
 
 	system("PAUSE");

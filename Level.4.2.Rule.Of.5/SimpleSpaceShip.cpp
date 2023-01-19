@@ -26,7 +26,7 @@ SimpleSpaceShip::SimpleSpaceShip(const SimpleSpaceShip& src)
 //new memory created
 	: frontShield{ std::make_unique<Shield>(src.frontShield->getStrength()) },
 	rearShield{ std::make_unique<Shield>(src.rearShield->getStrength()) },
-	//rearShield(src.rearShield),
+	//rearShield(src.rearShield.get()),
 	position(src.position),
 	fuel(src.fuel),
 	name(src.name + "_copy")
@@ -59,12 +59,12 @@ SimpleSpaceShip& SimpleSpaceShip::operator=(const SimpleSpaceShip& src) noexcept
 	{
 		return *this;
 	}
-
+	
 	//copy non-pointer values
 	position = src.position;
 	fuel = src.fuel;
 	name = src.name + "_copyAssignment";
-
+	
 	//copy heap values from src
 	frontShield = std::make_unique<Shield>(src.frontShield->getStrength());
 	rearShield = std::make_unique<Shield>(src.rearShield->getStrength());
@@ -75,7 +75,7 @@ SimpleSpaceShip& SimpleSpaceShip::operator=(SimpleSpaceShip&& src) noexcept
 {
 	//1. release my resouces
 	//We are using smart pointers, so not necessary!
-
+	
 	//2. Steal resources from src.
 	frontShield = std::move(src.frontShield);
 	rearShield = std::move(src.rearShield);

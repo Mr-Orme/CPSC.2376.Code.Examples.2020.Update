@@ -1,5 +1,8 @@
 #include "Car.h"
-
-Car::Car()
+std::random_device Car::seed;
+std::default_random_engine Car::engine(seed());
+Car::Car(): 
+	Vehicle()
 {
+
 }

@@ -23,7 +23,7 @@ void print(SimpleSpaceShip* SSS)
 
 std::unique_ptr<SimpleSpaceShip> makeShip()
 {
-	std::unique_ptr<SimpleSpaceShip> temp{ std::make_unique<SimpleSpaceShip>() };
+	auto temp { std::make_unique<SimpleSpaceShip>() };
 	return temp;
 }
 

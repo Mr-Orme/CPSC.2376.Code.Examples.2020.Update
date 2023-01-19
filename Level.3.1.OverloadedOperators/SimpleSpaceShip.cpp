@@ -78,12 +78,23 @@ SimpleSpaceShip & SimpleSpaceShip::operator+=(const SimpleSpaceShip & src)
 	return *this;
 }
 
+SimpleSpaceShip& SimpleSpaceShip::operator+=(int src)
+{
+	fuel += src;
+	return *this;
+}
+
 SimpleSpaceShip operator+(const SimpleSpaceShip & srcL, const SimpleSpaceShip & srcR)
 {
 	return 
 	{
-		{srcL.getPosition().x + srcR.getPosition().x, srcL.getPosition().y + srcR.getPosition().y }
-		,srcL.fuel + srcR.fuel, srcL.getShieldStrength() + srcR.getShieldStrength() , srcL.getName()
+		{
+			srcL.getPosition().x + srcR.getPosition().x, 
+			srcL.getPosition().y + srcR.getPosition().y 
+		}
+		, srcL.fuel + srcR.fuel
+		, srcL.getShieldStrength() + srcR.getShieldStrength() 
+		, srcL.getName()
 	};
 }
 
