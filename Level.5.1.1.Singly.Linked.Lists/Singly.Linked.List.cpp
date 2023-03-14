@@ -1,36 +1,41 @@
 #include <iostream>
-#include <vector>
-#include <memory>
 
 
 struct node
 {
 	int data{ 0 };
-	std::unique_ptr<node> next{ nullptr };
+	node* next{ nullptr };
 };
 //add item at certain place in list, returns pointer head;
 //head is place = 0;
-void addItem(std::unique_ptr<node>& head, int place, int data);
+node* addItem(node* head, int place, int data);
 
 //searches list for data and removes it. returns head.
-void removeItem(std::unique_ptr<node>& head, int data);
+node* removeItem(node* head, int data);
 
 
 int main()
 {
-	std::unique_ptr<node> head{ std::make_unique<node>() };
+	node* head{ new node };
+
 	head->data = 0;
 
-	node* currNode = head.get();
-	for (int i = 1; i < 10; i++)
+	int numNodes{ 10 };
+
+	node* currNode{ head };
+	for (int i = 1; i < numNodes; i++)
 	{
+
 		while (currNode->next != nullptr)
 		{
-			currNode = currNode->next.get();
+			currNode = currNode->next;
 		}
-		std::unique_ptr<node> temp{ std::make_unique<node>() };
-		currNode->next = std::move(temp);
-		currNode = currNode->next.get();
+		
+		node* temp{ new node };
+		temp->next = nullptr;
+
+		currNode->next = temp;
+		currNode = currNode->next;
 		currNode->data = i;
 	}
 
@@ -38,13 +43,13 @@ int main()
 	do
 	{
 		//display list:
-		currNode = head.get();
-		while (currNode->next != nullptr)
+		currNode = head;
+		while (currNode != nullptr)
 		{
 			std::cout << currNode->data << std::endl;
-			currNode = currNode->next.get();
+			currNode = currNode->next;
 		}
-		std::cout << currNode->data << std::endl;
+		//cout << currNode->data << endl;
 
 		std::cout << "(a)dd item or (r)emove item or (q)uit: ";
 		std::cin >> command;
@@ -55,55 +60,58 @@ int main()
 		case 'a':
 			std::cout << std::endl << "What number do you want to add and where? ";
 			std::cin >> data >> place;
-			addItem(head, place, data);
+			head = addItem(head, place, data);
 			break;
 
 		case 'r':
 			std::cout << std::endl << "What number do you want to remove? ";
 			std::cin >> data;
-			removeItem(head, data);
+			head = removeItem(head, data);
 			break;
 		}
 		system("CLS");
 	} while (command != 'q');
 
+	delete head;
+
 	return 0;
 
 }
-void addItem(std::unique_ptr<node>& head, int place, int data)
+node* addItem(node* head, int place, int data)
 {
 	if (head != nullptr)
 	{
-		node* currNode = head.get();
+		node* currNode{ head };
 
-		std::unique_ptr<node> temp{ std::make_unique<node>() };
+		node* temp = new node;
 		temp->data = data;
 		temp->next = nullptr;
 
 		if (place == 0)
 		{
 
-			temp->next = std::move(head);
-			head = std::move(temp);
+			temp->next = head;
+			head = temp;
 		}
 		else
 		{
 			int i = 0;
 			while (currNode->next != nullptr && i != place)
 			{
-				currNode = currNode->next.get();
+				currNode = currNode->next;
 				i++;
 			}
 			if (i == place)
 			{
-				temp->next = std::move(currNode->next);
-				currNode->next = std::move(temp);
+				temp->next = currNode->next;
+				currNode->next = temp;
 			}
 		}
 	}
+	return head;
 }
 
-void removeItem(std::unique_ptr<node>& head, int data)
+node* removeItem(node* head, int data)
 {
 
 	//head
@@ -115,22 +123,27 @@ void removeItem(std::unique_ptr<node>& head, int data)
 		node* currNode{ nullptr };
 		if (head->data == data)
 		{
-			head = std::move(currNode->next);
+			currNode = head;
+			head = currNode->next;
 		}
 		else
 		{
-			node* prevnode{ head.get()};
-			currNode = head->next.get();
+			node* prevnode{ head };
+			currNode = head->next;
 			while (currNode != nullptr && currNode->data != data)
 			{
 				prevnode = currNode;
-				currNode = currNode->next.get();
+				currNode = currNode->next;
 			}
 
 			if (currNode != nullptr && currNode->data == data)
 			{
-				prevnode->next = std::move(currNode->next);
+				prevnode->next = currNode->next;
 			}
 		}
+
+
+		delete currNode;
 	}
+	return head;
 }

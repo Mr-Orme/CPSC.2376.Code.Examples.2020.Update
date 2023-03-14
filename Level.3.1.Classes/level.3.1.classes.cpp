@@ -1,8 +1,6 @@
 #include <iostream>
 #include "SimpleSpaceShip.h"
 
-using namespace std;
-
 int main() {
 
 	SimpleSpaceShip sss1;

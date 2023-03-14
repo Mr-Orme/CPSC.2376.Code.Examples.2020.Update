@@ -9,8 +9,6 @@
 
 #include "SimpleSpaceShip.h"
 
-using namespace std;
-
 int main() {
 
 
@@ -19,11 +17,11 @@ int main() {
 	SimpleSpaceShip sss3({ 1.4f,-0.5f }, 20, 14, "SSS3");
 
 	//Calling Output Stream Operator
-	cout << sss1 << ", " << sss2 << endl;
-	cout << sss3 << endl;
+	std::cout << sss1 << ", " << sss2 << std::endl;
+	std::cout << sss3 << std::endl;
 
 	//Calling stream insertion operator with addition operator
-	cout << sss1 + sss2 << endl;
+	std::cout << sss1 + sss2 << std::endl;
 
 	//binary addition operator
 	sss1 += sss2;
@@ -32,16 +30,16 @@ int main() {
 	SimpleSpaceShip sss4(sss1 + (sss2 + sss3));
 
 	////Checking results
-	cout << sss4 << endl;
+	std::cout << sss4 << std::endl;
 
 	//calling increment
 	++sss4;
-	cout << sss4 << endl;
+	std::cout << sss4 << std::endl;
 
 	//comparison
 	if (sss3 != sss4)
 	{
-		cout << "Shoot 'em down!!!" << endl;
+		std::cout << "Shoot 'em down!!!" << std::endl;
 	}
 	system("PAUSE");
 }

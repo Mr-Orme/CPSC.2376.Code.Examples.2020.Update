@@ -34,6 +34,7 @@ int main()
 	std::cout << (*thisPoint).y << std::endl; //paranthesis enure * is done first.
 	std::cout << thisPoint->y << std::endl; //arrow is easier!
 	thisPoint++; //<-- can increment and decrement iterators!
+	thisPoint += 2;
 	Vector2D myPoint;
 	/*** Lambdas vs function ****/
 	auto fooLambda{ [&](int num1, int num2)  //Note:: -> returnType is optional
@@ -45,7 +46,7 @@ int main()
 			return num1 * num2;
 			//return { num1, num2 };
 		} };
-	
+	myPoint.x++;
 	std::cout << fooFunction(2, 3) << std::endl;
 	std::cout << fooLambda(2, 3) << std::endl;
 
@@ -61,6 +62,7 @@ int main()
 		}); //do something to each element.
 	
 	std::sort(v.begin(), v.end()); //sort
+	std::reverse(v.begin(), v.end());
 	if (std::is_sorted(v.begin(), v.end()))
 	{
 		std::cout << "sorted" << std::endl;
@@ -75,7 +77,7 @@ int main()
 	largest = std::max_element(v.begin(), v.end());
 
 	/** Must overload < operator for user-defined types. **/
-	if (std::all_of(v.begin(), v.end(), [](int i) {return i < 18; }))//check if something is true for every element.
+	if (std::all_of(v.begin(), v.end(), [](int i) {return i < 20; }))//check if something is true for every element.
 	{
 		std::cout << "everything's under 20" << std::endl;
 	}
@@ -91,11 +93,13 @@ int main()
 		std::cout << "Found it" << std::endl;
 	}
 	Vector2D comparePoint{ 2,3 };//please note, it is better to overload the == operator and just use find....
-	if (auto result{ find_if(points.begin(), points.end(), 
-		[&](Vector2D point)//finds, but not just ==
-		{
-			return point.x == comparePoint.x && point.y == comparePoint.y;
-		}
+	if (auto result
+		{ 
+		find_if(points.begin(), points.end(), 
+			[&](Vector2D point)//finds, but not just ==
+			{
+				return point.x == comparePoint.x && point.y == comparePoint.y;
+			}
 	) }; result != points.end())
 	{
 		std::cout << "found a matching point!" << std::endl;
@@ -108,13 +112,13 @@ int main()
 	//NOTE:: the + operator only works on iterators for sequential containers!!
 	std::fill(v.begin(), v.begin() + 2, -6);//fills the first 2 item's with a -6
 	
-	//NOTE:: remove & remove_if, moves the matching items to the end of the container
+	//NOTE:: remove & remove_if, moves data to overwrite matching values.
 	//and returns an iterator to the first one that was "removed"
 	//This saves a lot of deleting in the middle on containers where such deleting is expensive...
 	//deleting off the end is always cheap.
 	v.erase(
 		std::remove(v.begin(), v.end(), -6)
-		, v.end()); //remvoes matching values...
+		, v.end()); //removes matching values...
 	v.erase(std::remove_if(v.begin(), v.end(), [](int i) {return i % 2 == 0; }), v.end());//choose your own comparison!
 
 	std::reverse(v.begin(), v.end()); //reverses the order

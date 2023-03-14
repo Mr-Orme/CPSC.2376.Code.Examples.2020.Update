@@ -27,7 +27,7 @@ float addTwoNumbers(float a, float b) {
  * Below is the Programming 2 approach (function Templates)
  */
 template<typename A, typename B>
-B addTwoNumbers(A a, B b)
+A addTwoNumbers(A a, B b)
 {
 	std::cout << "template version:" << std::endl;
 	return(a + b);
@@ -43,7 +43,7 @@ void main() {
 	int y1{ 2 };
 	float x2{ 1.0f };
 	float y2{ 2.2f };
-	auto returnValue{ addTwoNumbers(x2, y1) };
+	auto returnValue{ addTwoNumbers(x1, y2) };
 	std::cout << returnValue << std::endl;
 
 	/*
@@ -64,6 +64,7 @@ void main() {
 	for (auto num : stlArray)
 	{
 		std::cout << num << " ";
+		num++;
 	}
 	
 	std::cout << std::endl;
@@ -122,16 +123,12 @@ void main() {
 	for (int i{ 0 }; i < 255; i++)
 	{
 		//if it doesn't exist, it adds it...
-		ASCII[i] = (char)i;
+		ASCII.insert({ i,(char)i });
 	}
 
 	for (int i{ 0 }; i < ASCII.size(); i++)
 	{
 		std::cout << i << ": " << ASCII.at(i) << std::endl;
-	}
-	if (auto itemIt{ object.inventory.find(Item::Type::sword) }, itemIT != object.inventory.end())
-	{
-		itemIT->second.bonusValue
 	}
 
 	if (auto ASCIIit{ ASCII.find(64) }; ASCIIit != ASCII.end())

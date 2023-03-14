@@ -1,4 +1,3 @@
-#include "..\Level.4.1.Smart.Pointers\SimpleSpaceShip.h"
 #include <iostream>
 #include "SimpleSpaceShip.h"
 
@@ -98,6 +97,7 @@ SimpleSpaceShip operator+(const SimpleSpaceShip & srcL, const SimpleSpaceShip & 
 	};
 }
 
+
 SimpleSpaceShip operator-(const SimpleSpaceShip & srcL, const SimpleSpaceShip & srcR)
 {
 	return
@@ -125,6 +125,11 @@ bool operator<(const SimpleSpaceShip & srcL, const SimpleSpaceShip & srcR)
 {
 	return srcL.getPosition().x < srcR.getPosition().x && srcL.getPosition().y < srcR.getPosition().y;
 	
+}
+
+bool operator<=(const SimpleSpaceShip& srcL, const SimpleSpaceShip& srcR)
+{
+	return (srcL < srcR) || srcL == srcR;
 }
 
 bool operator>(const SimpleSpaceShip & srcL, const SimpleSpaceShip & srcR)

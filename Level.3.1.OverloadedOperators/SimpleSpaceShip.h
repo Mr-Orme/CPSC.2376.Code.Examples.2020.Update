@@ -3,7 +3,6 @@
 
 #include <string>
 #include <iostream>
-using namespace std;
 struct Coordinates
 {
 	Coordinates(float x, float y) :x{ x }, y{ y }{}
@@ -35,7 +34,6 @@ public:
 	SimpleSpaceShip& operator+= (const SimpleSpaceShip& src);
 	SimpleSpaceShip& operator+= (int src);
 	
-
 	int fuel{ 0 };     //data member 
 private:
 	Coordinates position{ 0.0f, 0.0f };
@@ -57,6 +55,7 @@ std::istream& operator>>(std::istream& o, SimpleSpaceShip& src);
 
 //boolean operators return bool! define < and all the rest should be based off of <
 bool operator<(const SimpleSpaceShip& srcL, const SimpleSpaceShip& srcR);
+bool operator<=(const SimpleSpaceShip& srcL, const SimpleSpaceShip& srcR);
 bool operator>(const SimpleSpaceShip& srcL, const SimpleSpaceShip& srcR);
 
 //define == and != should be based off of ==
